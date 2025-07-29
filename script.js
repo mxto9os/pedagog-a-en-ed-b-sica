@@ -19,7 +19,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 "Psicología del Desarrollo de la Infancia",
                 "Educación Matemática I: Números y su Didáctica",
                 "Lenguaje y Comunicación I: Fundamentos Lingüísticos, Oralidad y su Didáctica",
-                "Cienas Sociales II: Historia Universal y su Didáctica",
+                "Ciencias Sociales II: Historia Universal y su Didáctica",
                 "Ciencias Naturales II: Seres Vivos y su Didáctica"
             ]
         },
