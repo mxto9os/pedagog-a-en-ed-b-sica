@@ -1,8 +1,8 @@
 document.addEventListener('DOMContentLoaded', function() {
-    // Datos de la malla curricular
+    // Datos de la malla curricular (solo por semestres)
     const curriculumData = [
         {
-            title: "Año 1 - Semestre 1",
+            title: "Semestre 1",
             courses: [
                 "Taller de Comunicación Oral y Escrita",
                 "Metacognición y Formación Universitaria",
@@ -12,7 +12,7 @@ document.addEventListener('DOMContentLoaded', function() {
             ]
         },
         {
-            title: "Año 1 - Semestre 2",
+            title: "Semestre 2",
             courses: [
                 "Fundamentos Socioculturales de la Educación",
                 "Psicología del Desarrollo de la Infancia",
@@ -22,7 +22,7 @@ document.addEventListener('DOMContentLoaded', function() {
             ]
         },
         {
-            title: "Año 2 - Semestre 3",
+            title: "Semestre 3",
             courses: [
                 "Teoría de la Educación",
                 "Psicología del Aprendizaje",
@@ -32,7 +32,7 @@ document.addEventListener('DOMContentLoaded', function() {
             ]
         },
         {
-            title: "Año 2 - Semestre 4",
+            title: "Semestre 4",
             courses: [
                 "Educación Física I: Habilidades Motrices",
                 "Educación Matemática III: Álgebra y su Didáctica",
@@ -42,7 +42,7 @@ document.addEventListener('DOMContentLoaded', function() {
             ]
         },
         {
-            title: "Año 3 - Semestre 5",
+            title: "Semestre 5",
             courses: [
                 "Ciencias Naturales IV: Física y su Didáctica",
                 "Evaluación Educativa",
@@ -52,7 +52,7 @@ document.addEventListener('DOMContentLoaded', function() {
             ]
         },
         {
-            title: "Año 3 - Semestre 6",
+            title: "Semestre 6",
             courses: [
                 "Orientación en Educación Básica",
                 "Gestión Educativa de Aula Inicial",
@@ -62,7 +62,7 @@ document.addEventListener('DOMContentLoaded', function() {
             ]
         },
         {
-            title: "Año 4 - Semestre 7",
+            title: "Semestre 7",
             courses: [
                 "Inglés II",
                 "Investigación Educativa",
@@ -72,7 +72,7 @@ document.addEventListener('DOMContentLoaded', function() {
             ]
         },
         {
-            title: "Año 4 - Semestre 8",
+            title: "Semestre 8",
             courses: [
                 "Informática Educativa",
                 "Contextos Inclusivos",
@@ -82,7 +82,7 @@ document.addEventListener('DOMContentLoaded', function() {
             ]
         },
         {
-            title: "Año 5 - Semestre 9",
+            title: "Semestre 9 - Matemática",
             mention: "math",
             courses: [
                 "Profundización del Currículum de Matemática",
@@ -92,7 +92,7 @@ document.addEventListener('DOMContentLoaded', function() {
             ]
         },
         {
-            title: "Año 5 - Semestre 9",
+            title: "Semestre 9 - Lenguaje",
             mention: "language",
             courses: [
                 "Profundización del Currículum de Lenguaje y Comunicación",
@@ -102,7 +102,7 @@ document.addEventListener('DOMContentLoaded', function() {
             ]
         },
         {
-            title: "Año 5 - Semestre 10",
+            title: "Semestre 10 - Matemática",
             mention: "math",
             courses: [
                 "Diseño de Instrumentos Evaluativos (Matemática)",
@@ -112,7 +112,7 @@ document.addEventListener('DOMContentLoaded', function() {
             ]
         },
         {
-            title: "Año 5 - Semestre 10",
+            title: "Semestre 10 - Lenguaje",
             mention: "language",
             courses: [
                 "Diseño de Instrumentos Evaluativos (Lenguaje)",
@@ -125,11 +125,11 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Variables de estado
     let completedCourses = JSON.parse(localStorage.getItem('completedCourses')) || {};
-    let currentMention = localStorage.getItem('currentMention')) || 'none';
-    let themeColor = localStorage.getItem('themeColor')) || '#4a6fa5';
+    let currentMention = localStorage.getItem('currentMention') || 'none';
+    let themeColor = localStorage.getItem('themeColor') || '#4a6fa5';
 
     // Elementos del DOM
-    const semestersContainer = document.querySelector('.semesters-container');
+    const semestersGrid = document.querySelector('.semesters-grid');
     const mentionSelect = document.getElementById('mentionSelect');
     const themeColorInput = document.getElementById('themeColor');
     const applyColorBtn = document.getElementById('applyColor');
@@ -147,7 +147,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Renderizar los semestres
     function renderSemesters() {
-        semestersContainer.innerHTML = '';
+        semestersGrid.innerHTML = '';
         
         // Filtrar semestres según la mención seleccionada
         const filteredSemesters = curriculumData.filter(semester => {
@@ -189,7 +189,7 @@ document.addEventListener('DOMContentLoaded', function() {
             
             semesterEl.appendChild(semesterHeader);
             semesterEl.appendChild(courseList);
-            semestersContainer.appendChild(semesterEl);
+            semestersGrid.appendChild(semesterEl);
         });
     }
 
