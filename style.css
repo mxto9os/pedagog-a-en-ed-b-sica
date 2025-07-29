@@ -271,3 +271,23 @@ button:hover {
 .course-name {
     flex-grow: 1;
 }
+
+.semester.mention-semester {
+    border-left: 4px solid var(--primary-dark);
+    background-color: rgba(74, 111, 165, 0.05);
+}
+
+.semester.mention-semester .semester-header {
+    border-color: var(--primary-dark);
+    font-weight: bold;
+}
+
+@media (min-width: 768px) {
+    .semesters-grid {
+        grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    }
+    
+    .semester.mention-semester {
+        grid-column: span 2;
+    }
+}
