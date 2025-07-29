@@ -228,3 +228,46 @@ button:hover {
         grid-template-columns: 1fr;
     }
 }
+
+.course-content {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    align-items: center;
+}
+
+.grade-input {
+    width: 50px;
+    padding: 5px;
+    border: 1px solid var(--medium-gray);
+    border-radius: 4px;
+    text-align: center;
+    margin-left: 10px;
+    display: none;
+}
+
+.course-item.completed .grade-input {
+    display: block;
+}
+
+.grade-display {
+    display: none;
+    font-weight: bold;
+    margin-left: 10px;
+    min-width: 30px;
+    text-align: center;
+}
+
+.course-item.completed .grade-display {
+    display: block;
+}
+
+/* Ajustar el checkbox para dejar espacio al promedio */
+.checkbox-container {
+    margin-left: 15px;
+    order: 2; /* Mover a la derecha */
+}
+
+.course-name {
+    flex-grow: 1;
+}
