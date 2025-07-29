@@ -1,1 +1,49 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Malla Curricular - Pedagogía en Educación Básica</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Malla Curricular - Pedagogía en Educación Básica (Diurno)</h1>
+            <p>Duración: 5 años (10 semestres)</p>
+            
+            <div class="controls">
+                <div class="color-picker">
+                    <label for="themeColor">Color de tema:</label>
+                    <input type="color" id="themeColor" value="#4a6fa5">
+                    <button id="applyColor">Aplicar</button>
+                </div>
+                
+                <div class="mention-selector">
+                    <label>Mención:</label>
+                    <select id="mentionSelect">
+                        <option value="none">Ninguna</option>
+                        <option value="math">Matemática</option>
+                        <option value="language">Lenguaje y Comunicación</option>
+                    </select>
+                </div>
+            </div>
+        </header>
 
+        <div class="semesters-container">
+            <!-- Los semestres se generarán dinámicamente con JavaScript -->
+        </div>
+
+        <div class="progress-container">
+            <h2>Progreso General</h2>
+            <div class="progress-bar">
+                <div class="progress-fill" id="generalProgress"></div>
+            </div>
+            <span id="progressText">0% completado</span>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
