@@ -8,32 +8,36 @@ document.addEventListener('DOMContentLoaded', function() {
                 "Metacognición y Formación Universitaria",
                 "Lenguaje Artístico Visual",
                 "Ciencias Naturales I: Tierra y Universo y su Didáctica",
+                "Fundamentos Socioculturales de la Educación",
                 "Ciencias Sociales I: Geografía y su Didáctica"
             ]
         },
         {
             title: "Semestre 2",
             courses: [
-                "Fundamentos Socioculturales de la Educación",
+                "Teoría de la Educación",
                 "Psicología del Desarrollo de la Infancia",
                 "Educación Matemática I: Números y su Didáctica",
                 "Lenguaje y Comunicación I: Fundamentos Lingüísticos, Oralidad y su Didáctica",
+                "Cienas Sociales II: Historia Universal y su Didáctica",
                 "Ciencias Naturales II: Seres Vivos y su Didáctica"
             ]
         },
         {
             title: "Semestre 3",
             courses: [
-                "Teoría de la Educación",
+                "Teoría y Diseño Curricular",
                 "Psicología del Aprendizaje",
                 "Educación Matemática II: Geometría y su Didáctica",
                 "Lenguaje y Comunicación II: Producción de Textos y su Didáctica",
+                "Ciencias Sociales III: Historia de Chile y SI Didáctica",
                 "Práctica de Pasantía: Contexto Escolar (Primera práctica)"
             ]
         },
         {
             title: "Semestre 4",
             courses: [
+                "Evauluación Educativa",
                 "Educación Física I: Habilidades Motrices",
                 "Educación Matemática III: Álgebra y su Didáctica",
                 "Lenguaje y Comunicación III: Comprensión de Textos y su Didáctica",
@@ -45,7 +49,7 @@ document.addEventListener('DOMContentLoaded', function() {
             title: "Semestre 5",
             courses: [
                 "Ciencias Naturales IV: Física y su Didáctica",
-                "Evaluación Educativa",
+                "Ciencias Sociales IV: Formación Ciudadana y su Didáctica",
                 "Educación Física II: Vida Activa y Saludable",
                 "Educación Matemática IV: Datos y Probabilidades y su Didáctica",
                 "Práctica Intermedia I: Integración Curricular"
@@ -54,10 +58,11 @@ document.addEventListener('DOMContentLoaded', function() {
         {
             title: "Semestre 6",
             courses: [
-                "Orientación en Educación Básica",
-                "Gestión Educativa de Aula Inicial",
-                "Lenguaje Artístico Musical",
+                "Información Educativa",
+                "Contextos Inclusivos",
+                "Lenguaje y Comunicación V: Teatro escolar, Literatura Infantil y su Didáctica",
                 "Inglés I",
+                "Didáctica de la Matemática",
                 "Práctica Intermedia II: Articulación de Lectura y Escritura Inicial"
             ]
         },
@@ -65,38 +70,66 @@ document.addEventListener('DOMContentLoaded', function() {
             title: "Semestre 7",
             courses: [
                 "Inglés II",
-                "Investigación Educativa",
-                "Taller de Acompañamiento a la Progresión Académica II",
-                "Educación Tecnológica",
+                "Orientación en Educación Básica",
+                "Taller de Acompañamiento a la Progresión Académica I",
+                "Lenguaje Artístico Musical",
+                "Gestión Educativa de Aula Inicial",
                 "Práctica Intermedia III: Enseñanza de la Matemática"
             ]
-        },
-        {
+            },
+    {
+        title: "Semestre 7 - Matemática",
+        mention: "math",
+        courses: [
+            "Profundización del Currículum de la Matemática en Educación Básica"
+        ]
+    },
+    {
+        title: "Semestre 7 - Lenguaje",
+        mention: "language",
+        courses: [
+            "Profundización del Currículum de Lenguaje y Comunicación en Educación Básica"
+        ]
+    },
+    {
             title: "Semestre 8",
             courses: [
-                "Informática Educativa",
-                "Contextos Inclusivos",
-                "Lenguaje y Comunicación V: Teatro Escolar, Literatura Infantil y su Didáctica",
-                "Didáctica de la Matemática",
+                "Política Educacional Chilena",
+                "Investigación Educativa",
+                "Educación Tecnológica",
+                "Taller de Acompañamiento a la Progresión Académica I",
                 "Práctica Profesional I: Liderazgo Pedagógico"
-            ]
-        },
-        {
+              ]
+    },
+    {
+        title: "Semestre 8 - Matemática",
+        mention: "math",
+        courses: [
+            "Metodologías para el Aprendizaje de la Matemática en Educación Básica"
+        ]
+    },
+    {
+        title: "Semestre 8 - Lenguaje",
+        mention: "language",
+        courses: [
+            "Metodologías para el Aprendizaje del Lenguaje y la Comunicación en Educación Básica"
+        ]
+    },
+    {
             title: "Semestre 9 - Matemática",
             mention: "math",
             courses: [
-                "Profundización del Currículum de Matemática",
-                "Metodologías para el Aprendizaje de la Matemática",
+                "Diseño de Instrumentos Evaluativos para la Matemática",
                 "Seminario de la Especialidad (Matemática)",
                 "Práctica Profesional II: Investigación-Acción (Matemática)"
             ]
+            
         },
         {
             title: "Semestre 9 - Lenguaje",
             mention: "language",
             courses: [
-                "Profundización del Currículum de Lenguaje y Comunicación",
-                "Metodologías para el Aprendizaje del Lenguaje",
+                "Diseño de Instrumentos Evaluativos para el Lenguaje y la Comunicación",
                 "Seminario de la Especialidad (Lenguaje)",
                 "Práctica Profesional II: Investigación-Acción (Lenguaje)"
             ]
@@ -105,8 +138,7 @@ document.addEventListener('DOMContentLoaded', function() {
             title: "Semestre 10 - Matemática",
             mention: "math",
             courses: [
-                "Diseño de Instrumentos Evaluativos (Matemática)",
-                "Taller de Software y Programación",
+                "Taller de Software, Algoritmo y Programación para la Educación Matemática",
                 "Práctica Profesional III (Matemática)",
                 "Seminario de Grado (Matemática)"
             ]
@@ -115,8 +147,7 @@ document.addEventListener('DOMContentLoaded', function() {
             title: "Semestre 10 - Lenguaje",
             mention: "language",
             courses: [
-                "Diseño de Instrumentos Evaluativos (Lenguaje)",
-                "Taller de Software y Multimodalidad",
+                "Taller de Software, Multimodalidad y Medios de Comunicación",
                 "Práctica Profesional III (Lenguaje)",
                 "Seminario de Grado (Lenguaje)"
             ]
