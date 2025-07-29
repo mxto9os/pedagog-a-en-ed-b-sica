@@ -1,1 +1,357 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Malla Curricular - Pedagogía en Educación Básica</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <h1>Malla Curricular - Pedagogía en Educación Básica</h1>
+        <div class="controls">
+            <div class="color-picker">
+                <label for="themeColor">Color principal:</label>
+                <input type="color" id="themeColor" value="#4a6fa5">
+                <button id="applyColor">Aplicar</button>
+            </div>
+            <div class="mention-selector">
+                <label>Mención:</label>
+                <select id="mentionSelect">
+                    <option value="all">Todas las asignaturas</option>
+                    <option value="math">Matemáticas</option>
+                    <option value="language">Lenguaje</option>
+                </select>
+            </div>
+        </div>
+    </header>
 
+    <main>
+        <div class="timeline">
+            <!-- Año 1 -->
+            <div class="year">
+                <h2>Año 1</h2>
+                <div class="semesters-container">
+                    <!-- Semestre 1 -->
+                    <div class="semester">
+                        <h3>Semestre 1</h3>
+                        <div class="course" data-year="1" data-semester="1">
+                            <span>Taller de Comunicación Oral y Escrita</span>
+                            <button class="complete-btn">Completado</button>
+                        </div>
+                        <div class="course" data-year="1" data-semester="1">
+                            <span>Metacognición y Formación Universitaria</span>
+                            <button class="complete-btn">Completado</button>
+                        </div>
+                        <div class="course" data-year="1" data-semester="1">
+                            <span>Lenguaje Artístico Visual</span>
+                            <button class="complete-btn">Completado</button>
+                        </div>
+                        <div class="course" data-year="1" data-semester="1">
+                            <span>Ciencias Naturales I: Tierra y Universo y su Didáctica</span>
+                            <button class="complete-btn">Completado</button>
+                        </div>
+                        <div class="course" data-year="1" data-semester="1">
+                            <span>Ciencias Sociales I: Geografía y su Didáctica</span>
+                            <button class="complete-btn">Completado</button>
+                        </div>
+                    </div>
+
+                    <!-- Semestre 2 -->
+                    <div class="semester">
+                        <h3>Semestre 2</h3>
+                        <div class="course" data-year="1" data-semester="2">
+                            <span>Fundamentos Socioculturales de la Educación</span>
+                            <button class="complete-btn">Completado</button>
+                        </div>
+                        <div class="course" data-year="1" data-semester="2">
+                            <span>Psicología del Desarrollo de la Infancia</span>
+                            <button class="complete-btn">Completado</button>
+                        </div>
+                        <div class="course" data-year="1" data-semester="2">
+                            <span>Educación Matemática I: Números y su Didáctica</span>
+                            <button class="complete-btn">Completado</button>
+                        </div>
+                        <div class="course" data-year="1" data-semester="2">
+                            <span>Lenguaje y Comunicación I: Fundamentos Lingüísticos, Oralidad y su Didáctica</span>
+                            <button class="complete-btn">Completado</button>
+                        </div>
+                        <div class="course" data-year="1" data-semester="2">
+                            <span>Ciencias Naturales II: Seres Vivos y su Didáctica</span>
+                            <button class="complete-btn">Completado</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Año 2 -->
+            <div class="year">
+                <h2>Año 2</h2>
+                <div class="semesters-container">
+                    <!-- Semestre 3 -->
+                    <div class="semester">
+                        <h3>Semestre 3</h3>
+                        <div class="course" data-year="2" data-semester="3">
+                            <span>Teoría de la Educación</span>
+                            <button class="complete-btn">Completado</button>
+                        </div>
+                        <div class="course" data-year="2" data-semester="3">
+                            <span>Psicología del Aprendizaje</span>
+                            <button class="complete-btn">Completado</button>
+                        </div>
+                        <div class="course" data-year="2" data-semester="3">
+                            <span>Educación Matemática II: Geometría y su Didáctica</span>
+                            <button class="complete-btn">Completado</button>
+                        </div>
+                        <div class="course" data-year="2" data-semester="3">
+                            <span>Lenguaje y Comunicación II: Producción de Textos y su Didáctica</span>
+                            <button class="complete-btn">Completado</button>
+                        </div>
+                        <div class="course" data-year="2" data-semester="3">
+                            <span>Práctica de Pasantía: Contexto Escolar (Primera práctica)</span>
+                            <button class="complete-btn">Completado</button>
+                        </div>
+                    </div>
+
+                    <!-- Semestre 4 -->
+                    <div class="semester">
+                        <h3>Semestre 4</h3>
+                        <div class="course" data-year="2" data-semester="4">
+                            <span>Educación Física I: Habilidades Motrices</span>
+                            <button class="complete-btn">Completado</button>
+                        </div>
+                        <div class="course" data-year="2" data-semester="4">
+                            <span>Educación Matemática III: Álgebra y su Didáctica</span>
+                            <button class="complete-btn">Completado</button>
+                        </div>
+                        <div class="course" data-year="2" data-semester="4">
+                            <span>Lenguaje y Comunicación III: Comprensión de Textos y su Didáctica</span>
+                            <button class="complete-btn">Completado</button>
+                        </div>
+                        <div class="course" data-year="2" data-semester="4">
+                            <span>Ciencias Naturales III: Química y su Didáctica</span>
+                            <button class="complete-btn">Completado</button>
+                        </div>
+                        <div class="course" data-year="2" data-semester="4">
+                            <span>Práctica Inicial: Colaboración Docente</span>
+                            <button class="complete-btn">Completado</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Año 3 -->
+            <div class="year">
+                <h2>Año 3</h2>
+                <div class="semesters-container">
+                    <!-- Semestre 5 -->
+                    <div class="semester">
+                        <h3>Semestre 5</h3>
+                        <div class="course" data-year="3" data-semester="5">
+                            <span>Ciencias Naturales IV: Física y su Didáctica</span>
+                            <button class="complete-btn">Completado</button>
+                        </div>
+                        <div class="course" data-year="3" data-semester="5">
+                            <span>Evaluación Educativa</span>
+                            <button class="complete-btn">Completado</button>
+                        </div>
+                        <div class="course" data-year="3" data-semester="5">
+                            <span>Educación Física II: Vida Activa y Saludable</span>
+                            <button class="complete-btn">Completado</button>
+                        </div>
+                        <div class="course" data-year="3" data-semester="5">
+                            <span>Educación Matemática IV: Datos y Probabilidades y su Didáctica</span>
+                            <button class="complete-btn">Completado</button>
+                        </div>
+                        <div class="course" data-year="3" data-semester="5">
+                            <span>Práctica Intermedia I: Integración Curricular</span>
+                            <button class="complete-btn">Completado</button>
+                        </div>
+                    </div>
+
+                    <!-- Semestre 6 -->
+                    <div class="semester">
+                        <h3>Semestre 6</h3>
+                        <div class="course" data-year="3" data-semester="6">
+                            <span>Orientación en Educación Básica</span>
+                            <button class="complete-btn">Completado</button>
+                        </div>
+                        <div class="course" data-year="3" data-semester="6">
+                            <span>Gestión Educativa de Aula Inicial</span>
+                            <button class="complete-btn">Completado</button>
+                        </div>
+                        <div class="course" data-year="3" data-semester="6">
+                            <span>Lenguaje Artístico Musical</span>
+                            <button class="complete-btn">Completado</button>
+                        </div>
+                        <div class="course" data-year="3" data-semester="6">
+                            <span>Inglés I</span>
+                            <button class="complete-btn">Completado</button>
+                        </div>
+                        <div class="course" data-year="3" data-semester="6">
+                            <span>Práctica Intermedia II: Articulación de Lectura y Escritura Inicial</span>
+                            <button class="complete-btn">Completado</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Año 4 -->
+            <div class="year">
+                <h2>Año 4</h2>
+                <div class="semesters-container">
+                    <!-- Semestre 7 -->
+                    <div class="semester">
+                        <h3>Semestre 7</h3>
+                        <div class="course" data-year="4" data-semester="7">
+                            <span>Inglés II</span>
+                            <button class="complete-btn">Completado</button>
+                        </div>
+                        <div class="course" data-year="4" data-semester="7">
+                            <span>Investigación Educativa</span>
+                            <button class="complete-btn">Completado</button>
+                        </div>
+                        <div class="course" data-year="4" data-semester="7">
+                            <span>Taller de Acompañamiento a la Progresión Académica II</span>
+                            <button class="complete-btn">Completado</button>
+                        </div>
+                        <div class="course" data-year="4" data-semester="7">
+                            <span>Educación Tecnológica</span>
+                            <button class="complete-btn">Completado</button>
+                        </div>
+                        <div class="course" data-year="4" data-semester="7">
+                            <span>Práctica Intermedia III: Enseñanza de la Matemática</span>
+                            <button class="complete-btn">Completado</button>
+                        </div>
+                    </div>
+
+                    <!-- Semestre 8 -->
+                    <div class="semester">
+                        <h3>Semestre 8</h3>
+                        <div class="course" data-year="4" data-semester="8">
+                            <span>Informática Educativa</span>
+                            <button class="complete-btn">Completado</button>
+                        </div>
+                        <div class="course" data-year="4" data-semester="8">
+                            <span>Contextos Inclusivos</span>
+                            <button class="complete-btn">Completado</button>
+                        </div>
+                        <div class="course" data-year="4" data-semester="8">
+                            <span>Lenguaje y Comunicación V: Teatro Escolar, Literatura Infantil y su Didáctica</span>
+                            <button class="complete-btn">Completado</button>
+                        </div>
+                        <div class="course" data-year="4" data-semester="8">
+                            <span>Didáctica de la Matemática</span>
+                            <button class="complete-btn">Completado</button>
+                        </div>
+                        <div class="course" data-year="4" data-semester="8">
+                            <span>Práctica Profesional I: Liderazgo Pedagógico</span>
+                            <button class="complete-btn">Completado</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Año 5 -->
+            <div class="year">
+                <h2>Año 5</h2>
+                <div class="semesters-container">
+                    <!-- Semestre 9 -->
+                    <div class="semester">
+                        <h3>Semestre 9</h3>
+                        <!-- Mención Lenguaje -->
+                        <div class="mention-section" data-mention="language">
+                            <h4>Mención Lenguaje y Comunicación</h4>
+                            <div class="course" data-year="5" data-semester="9">
+                                <span>Profundización del Currículum de Lenguaje y Comunicación</span>
+                                <button class="complete-btn">Completado</button>
+                            </div>
+                            <div class="course" data-year="5" data-semester="9">
+                                <span>Metodologías para el Aprendizaje del Lenguaje</span>
+                                <button class="complete-btn">Completado</button>
+                            </div>
+                            <div class="course" data-year="5" data-semester="9">
+                                <span>Seminario de la Especialidad (Lenguaje)</span>
+                                <button class="complete-btn">Completado</button>
+                            </div>
+                            <div class="course" data-year="5" data-semester="9">
+                                <span>Práctica Profesional II: Investigación-Acción (Lenguaje)</span>
+                                <button class="complete-btn">Completado</button>
+                            </div>
+                        </div>
+
+                        <!-- Mención Matemática -->
+                        <div class="mention-section" data-mention="math">
+                            <h4>Mención Matemática</h4>
+                            <div class="course" data-year="5" data-semester="9">
+                                <span>Profundización del Currículum de Matemática</span>
+                                <button class="complete-btn">Completado</button>
+                            </div>
+                            <div class="course" data-year="5" data-semester="9">
+                                <span>Metodologías para el Aprendizaje de la Matemática</span>
+                                <button class="complete-btn">Completado</button>
+                            </div>
+                            <div class="course" data-year="5" data-semester="9">
+                                <span>Seminario de la Especialidad (Matemática)</span>
+                                <button class="complete-btn">Completado</button>
+                            </div>
+                            <div class="course" data-year="5" data-semester="9">
+                                <span>Práctica Profesional II: Investigación-Acción (Matemática)</span>
+                                <button class="complete-btn">Completado</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Semestre 10 -->
+                    <div class="semester">
+                        <h3>Semestre 10</h3>
+                        <!-- Mención Lenguaje -->
+                        <div class="mention-section" data-mention="language">
+                            <h4>Mención Lenguaje y Comunicación</h4>
+                            <div class="course" data-year="5" data-semester="10">
+                                <span>Diseño de Instrumentos Evaluativos (Lenguaje)</span>
+                                <button class="complete-btn">Completado</button>
+                            </div>
+                            <div class="course" data-year="5" data-semester="10">
+                                <span>Taller de Software y Multimodalidad</span>
+                                <button class="complete-btn">Completado</button>
+                            </div>
+                            <div class="course" data-year="5" data-semester="10">
+                                <span>Práctica Profesional III (Lenguaje)</span>
+                                <button class="complete-btn">Completado</button>
+                            </div>
+                            <div class="course" data-year="5" data-semester="10">
+                                <span>Seminario de Grado (Lenguaje)</span>
+                                <button class="complete-btn">Completado</button>
+                            </div>
+                        </div>
+
+                        <!-- Mención Matemática -->
+                        <div class="mention-section" data-mention="math">
+                            <h4>Mención Matemática</h4>
+                            <div class="course" data-year="5" data-semester="10">
+                                <span>Diseño de Instrumentos Evaluativos (Matemática)</span>
+                                <button class="complete-btn">Completado</button>
+                            </div>
+                            <div class="course" data-year="5" data-semester="10">
+                                <span>Taller de Software y Programación</span>
+                                <button class="complete-btn">Completado</button>
+                            </div>
+                            <div class="course" data-year="5" data-semester="10">
+                                <span>Práctica Profesional III (Matemática)</span>
+                                <button class="complete-btn">Completado</button>
+                            </div>
+                            <div class="course" data-year="5" data-semester="10">
+                                <span>Seminario de Grado (Matemática)</span>
+                                <button class="complete-btn">Completado</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script src="script.js"></script>
+</body>
+</html>
