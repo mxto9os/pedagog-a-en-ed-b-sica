@@ -131,24 +131,54 @@ button:hover {
     border-left: 4px solid #673ab7;
 }
 
-.complete-btn {
-    padding: 5px 10px;
-    background-color: var(--primary-color);
-    color: white;
-    border: none;
+.course-item {
+    padding: 10px;
+    margin-bottom: 8px;
+    background-color: var(--light-gray);
     border-radius: 4px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: all 0.3s;
     cursor: pointer;
-    font-size: 0.8rem;
-    transition: background-color 0.3s;
 }
 
-.complete-btn:hover {
-    background-color: var(--primary-dark);
+.checkbox-container {
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    border: 2px solid var(--primary-color);
+    border-radius: 4px;
+    position: relative;
+    margin-left: 10px;
+    flex-shrink: 0;
+    transition: all 0.3s;
 }
 
-.course-item.completed .complete-btn {
-    background-color: var(--completed-dark);
+.checkbox-container::after {
+    content: "✓";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: white;
+    font-size: 14px;
+    opacity: 0;
+    transition: opacity 0.3s;
 }
+
+.course-item.completed .checkbox-container {
+    background-color: var(--primary-color);
+    border-color: var(--primary-dark);
+}
+
+.course-item.completed .checkbox-container::after {
+    opacity: 1;
+}
+
+.course-item:hover .checkbox-container {
+    border-color: var(--primary-dark);
+};
 
 .progress-container {
     margin-top: 40px;
