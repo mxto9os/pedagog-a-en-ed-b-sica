@@ -147,68 +147,64 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Renderizar los semestres
     function renderSemesters() {
-        semestersGrid.innerHTML = '';
+    semestersGrid.innerHTML = '';
+    
+    const filteredSemesters = curriculumData.filter(semester => {
+        if (!semester.mention) return true;
+        return currentMention === 'none' ? false : semester.mention === currentMention;
+    });
+    
+    filteredSemesters.forEach(semester => {
+        const semesterEl = document.createElement('div');
+        semesterEl.className = 'semester';
         
-        // Filtrar semestres según la mención seleccionada
-        const filteredSemesters = curriculumData.filter(semester => {
-            if (!semester.mention) return true;
-            return currentMention === 'none' ? false : semester.mention === currentMention;
+        const semesterHeader = document.createElement('div');
+        semesterHeader.className = 'semester-header';
+        semesterHeader.innerHTML = `<h3 class="semester-title">${semester.title}</h3>`;
+        
+        const courseList = document.createElement('ul');
+        courseList.className = 'course-list';
+        
+        semester.courses.forEach(course => {
+            const courseId = course.replace(/\s+/g, '-').toLowerCase();
+            const isCompleted = completedCourses[courseId] || false;
+            
+            const courseItem = document.createElement('li');
+            courseItem.className = `course-item ${isCompleted ? 'completed' : ''} ${semester.mention ? 'mention-' + semester.mention : ''}`;
+            courseItem.dataset.courseId = courseId;
+            
+            const courseName = document.createElement('span');
+            courseName.textContent = course;
+            
+            const checkboxContainer = document.createElement('div');
+            checkboxContainer.className = 'checkbox-container';
+            
+            courseItem.appendChild(courseName);
+            courseItem.appendChild(checkboxContainer);
+            courseList.appendChild(courseItem);
+            
+            // Event listener en todo el courseItem
+            courseItem.addEventListener('click', () => toggleCourseCompletion(courseId));
         });
         
-        filteredSemesters.forEach(semester => {
-            const semesterEl = document.createElement('div');
-            semesterEl.className = 'semester';
-            
-            const semesterHeader = document.createElement('div');
-            semesterHeader.className = 'semester-header';
-            semesterHeader.innerHTML = `<h3 class="semester-title">${semester.title}</h3>`;
-            
-            const courseList = document.createElement('ul');
-            courseList.className = 'course-list';
-            
-            semester.courses.forEach(course => {
-                const courseId = course.replace(/\s+/g, '-').toLowerCase();
-                const isCompleted = completedCourses[courseId] || false;
-                
-                const courseItem = document.createElement('li');
-                courseItem.className = `course-item ${isCompleted ? 'completed' : ''} ${semester.mention ? 'mention-' + semester.mention : ''}`;
-                courseItem.dataset.courseId = courseId;
-                
-                const courseName = document.createElement('span');
-                courseName.textContent = course;
-                
-                const completeBtn = document.createElement('button');
-                completeBtn.className = 'complete-btn';
-                completeBtn.textContent = isCompleted ? '✓ Completado' : 'Completar';
-                completeBtn.addEventListener('click', () => toggleCourseCompletion(courseId));
-                
-                courseItem.appendChild(courseName);
-                courseItem.appendChild(completeBtn);
-                courseList.appendChild(courseItem);
-            });
-            
-            semesterEl.appendChild(semesterHeader);
-            semesterEl.appendChild(courseList);
-            semestersGrid.appendChild(semesterEl);
-        });
-    }
+        semesterEl.appendChild(semesterHeader);
+        semesterEl.appendChild(courseList);
+        semestersGrid.appendChild(semesterEl);
+    });
+}
 
     // Alternar estado de completado de un curso
-    function toggleCourseCompletion(courseId) {
-        completedCourses[courseId] = !completedCourses[courseId];
-        localStorage.setItem('completedCourses', JSON.stringify(completedCourses));
-        
-        // Actualizar la interfaz
-        const courseItem = document.querySelector(`.course-item[data-course-id="${courseId}"]`);
-        if (courseItem) {
-            courseItem.classList.toggle('completed');
-            const btn = courseItem.querySelector('.complete-btn');
-            btn.textContent = completedCourses[courseId] ? '✓ Completado' : 'Completar';
-            btn.style.backgroundColor = completedCourses[courseId] ? 'var(--completed-dark)' : 'var(--primary-color)';
-        }
-        
-        updateProgress();
+   function toggleCourseCompletion(courseId) {
+    completedCourses[courseId] = !completedCourses[courseId];
+    localStorage.setItem('completedCourses', JSON.stringify(completedCourses));
+    
+    const courseItem = document.querySelector(`.course-item[data-course-id="${courseId}"]`);
+    if (courseItem) {
+        courseItem.classList.toggle('completed');
     }
+    
+    updateProgress();
+}
 
     // Actualizar la barra de progreso
     function updateProgress() {
