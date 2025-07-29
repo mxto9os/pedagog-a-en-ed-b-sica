@@ -168,23 +168,50 @@ document.addEventListener('DOMContentLoaded', function() {
         semester.courses.forEach(course => {
             const courseId = course.replace(/\s+/g, '-').toLowerCase();
             const isCompleted = completedCourses[courseId] || false;
+            const courseGrade = completedCourses[courseId]?.grade || '';
             
             const courseItem = document.createElement('li');
             courseItem.className = `course-item ${isCompleted ? 'completed' : ''} ${semester.mention ? 'mention-' + semester.mention : ''}`;
             courseItem.dataset.courseId = courseId;
             
+            const courseContent = document.createElement('div');
+            courseContent.className = 'course-content';
+            
             const courseName = document.createElement('span');
+            courseName.className = 'course-name';
             courseName.textContent = course;
+            
+            const gradeInput = document.createElement('input');
+            gradeInput.type = 'number';
+            gradeInput.className = 'grade-input';
+            gradeInput.min = 1;
+            gradeInput.max = 7;
+            gradeInput.step = 0.1;
+            gradeInput.value = courseGrade;
+            gradeInput.placeholder = 'Nota';
+            gradeInput.addEventListener('change', (e) => saveGrade(courseId, e.target.value));
+            
+            const gradeDisplay = document.createElement('span');
+            gradeDisplay.className = 'grade-display';
+            gradeDisplay.textContent = courseGrade;
             
             const checkboxContainer = document.createElement('div');
             checkboxContainer.className = 'checkbox-container';
             
-            courseItem.appendChild(courseName);
-            courseItem.appendChild(checkboxContainer);
+            courseContent.appendChild(courseName);
+            courseContent.appendChild(gradeDisplay);
+            courseContent.appendChild(gradeInput);
+            courseContent.appendChild(checkboxContainer);
+            
+            courseItem.appendChild(courseContent);
             courseList.appendChild(courseItem);
             
-            // Event listener en todo el courseItem
-            courseItem.addEventListener('click', () => toggleCourseCompletion(courseId));
+            courseItem.addEventListener('click', (e) => {
+                // Evitar que el click en el input de nota active el toggle
+                if (e.target !== gradeInput) {
+                    toggleCourseCompletion(courseId);
+                }
+            });
         });
         
         semesterEl.appendChild(semesterHeader);
@@ -193,14 +220,52 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 }
 
-    // Alternar estado de completado de un curso
-   function toggleCourseCompletion(courseId) {
-    completedCourses[courseId] = !completedCourses[courseId];
+// Nueva función para guardar el promedio
+function saveGrade(courseId, grade) {
+    if (!completedCourses[courseId]) {
+        completedCourses[courseId] = {};
+    }
+    completedCourses[courseId].grade = grade;
+    localStorage.setItem('completedCourses', JSON.stringify(completedCourses));
+    
+    // Actualizar la visualización
+    const gradeDisplay = document.querySelector(`.course-item[data-course-id="${courseId}"] .grade-display`);
+    if (gradeDisplay) {
+        gradeDisplay.textContent = grade;
+    }
+}
+
+// Modificar la función toggleCourseCompletion
+function toggleCourseCompletion(courseId) {
+    if (!completedCourses[courseId] || typeof completedCourses[courseId] === 'boolean') {
+        completedCourses[courseId] = { grade: '' };
+    } else {
+        completedCourses[courseId] = !completedCourses[courseId];
+    }
+    
     localStorage.setItem('completedCourses', JSON.stringify(completedCourses));
     
     const courseItem = document.querySelector(`.course-item[data-course-id="${courseId}"]`);
     if (courseItem) {
         courseItem.classList.toggle('completed');
+        
+        // Mostrar/ocultar inputs según corresponda
+        const gradeInput = courseItem.querySelector('.grade-input');
+        const gradeDisplay = courseItem.querySelector('.grade-display');
+        
+        if (courseItem.classList.contains('completed')) {
+            gradeInput.style.display = 'block';
+            gradeDisplay.style.display = 'block';
+            
+            // Si ya tiene nota, mostrarla
+            if (completedCourses[courseId]?.grade) {
+                gradeDisplay.textContent = completedCourses[courseId].grade;
+                gradeInput.value = completedCourses[courseId].grade;
+            }
+        } else {
+            gradeInput.style.display = 'none';
+            gradeDisplay.style.display = 'none';
+        }
     }
     
     updateProgress();
