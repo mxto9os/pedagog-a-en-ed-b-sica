@@ -1,5 +1,5 @@
 document.addEventListener('DOMContentLoaded', function() {
-    // Datos de la malla curricular (solo por semestres)
+    // Datos completos y corregidos de la malla curricular
     const curriculumData = [
         {
             title: "Semestre 1",
@@ -30,14 +30,14 @@ document.addEventListener('DOMContentLoaded', function() {
                 "Psicología del Aprendizaje",
                 "Educación Matemática II: Geometría y su Didáctica",
                 "Lenguaje y Comunicación II: Producción de Textos y su Didáctica",
-                "Ciencias Sociales III: Historia de Chile y SI Didáctica",
+                "Ciencias Sociales III: Historia de Chile y su Didáctica",
                 "Práctica de Pasantía: Contexto Escolar (Primera práctica)"
             ]
         },
         {
             title: "Semestre 4",
             courses: [
-                "Evauluación Educativa",
+                "Evaluación Educativa",
                 "Educación Física I: Habilidades Motrices",
                 "Educación Matemática III: Álgebra y su Didáctica",
                 "Lenguaje y Comunicación III: Comprensión de Textos y su Didáctica",
@@ -58,7 +58,7 @@ document.addEventListener('DOMContentLoaded', function() {
         {
             title: "Semestre 6",
             courses: [
-                "Información Educativa",
+                "Informática Educativa",
                 "Contextos Inclusivos",
                 "Lenguaje y Comunicación V: Teatro escolar, Literatura Infantil y su Didáctica",
                 "Inglés I",
@@ -76,46 +76,46 @@ document.addEventListener('DOMContentLoaded', function() {
                 "Gestión Educativa de Aula Inicial",
                 "Práctica Intermedia III: Enseñanza de la Matemática"
             ]
-            },
-    {
-        title: "Semestre 7 - Matemática",
-        mention: "math",
-        courses: [
-            "Profundización del Currículum de la Matemática en Educación Básica"
-        ]
-    },
-    {
-        title: "Semestre 7 - Lenguaje",
-        mention: "language",
-        courses: [
-            "Profundización del Currículum de Lenguaje y Comunicación en Educación Básica"
-        ]
-    },
-    {
+        },
+        {
+            title: "Semestre 7 - Matemática",
+            mention: "math",
+            courses: [
+                "Profundización del Currículum de la Matemática en Educación Básica"
+            ]
+        },
+        {
+            title: "Semestre 7 - Lenguaje",
+            mention: "language",
+            courses: [
+                "Profundización del Currículum de Lenguaje y Comunicación en Educación Básica"
+            ]
+        },
+        {
             title: "Semestre 8",
             courses: [
                 "Política Educacional Chilena",
                 "Investigación Educativa",
                 "Educación Tecnológica",
-                "Taller de Acompañamiento a la Progresión Académica I",
+                "Taller de Acompañamiento a la Progresión Académica II",
                 "Práctica Profesional I: Liderazgo Pedagógico"
-              ]
-    },
-    {
-        title: "Semestre 8 - Matemática",
-        mention: "math",
-        courses: [
-            "Metodologías para el Aprendizaje de la Matemática en Educación Básica"
-        ]
-    },
-    {
-        title: "Semestre 8 - Lenguaje",
-        mention: "language",
-        courses: [
-            "Metodologías para el Aprendizaje del Lenguaje y la Comunicación en Educación Básica"
-        ]
-    },
-    {
+            ]
+        },
+        {
+            title: "Semestre 8 - Matemática",
+            mention: "math",
+            courses: [
+                "Metodologías para el Aprendizaje de la Matemática en Educación Básica"
+            ]
+        },
+        {
+            title: "Semestre 8 - Lenguaje",
+            mention: "language",
+            courses: [
+                "Metodologías para el Aprendizaje del Lenguaje y la Comunicación en Educación Básica"
+            ]
+        },
+        {
             title: "Semestre 9 - Matemática",
             mention: "math",
             courses: [
@@ -123,7 +123,6 @@ document.addEventListener('DOMContentLoaded', function() {
                 "Seminario de la Especialidad (Matemática)",
                 "Práctica Profesional II: Investigación-Acción (Matemática)"
             ]
-            
         },
         {
             title: "Semestre 9 - Lenguaje",
@@ -178,136 +177,128 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Renderizar los semestres
     function renderSemesters() {
-    semestersGrid.innerHTML = '';
-    
-    const filteredSemesters = curriculumData.filter(semester => {
-        if (!semester.mention) return true;
-        return currentMention === 'none' ? false : semester.mention === currentMention;
-    });
-    
-    filteredSemesters.forEach(semester => {
-        const semesterEl = document.createElement('div');
-        semesterEl.className = 'semester';
+        semestersGrid.innerHTML = '';
         
-        const semesterHeader = document.createElement('div');
-        semesterHeader.className = 'semester-header';
-        semesterHeader.innerHTML = `<h3 class="semester-title">${semester.title}</h3>`;
-        
-        const courseList = document.createElement('ul');
-        courseList.className = 'course-list';
-        
-        semester.courses.forEach(course => {
-            const courseId = course.replace(/\s+/g, '-').toLowerCase();
-            const isCompleted = completedCourses[courseId] || false;
-            const courseGrade = completedCourses[courseId]?.grade || '';
-            
-            const courseItem = document.createElement('li');
-            courseItem.className = `course-item ${isCompleted ? 'completed' : ''} ${semester.mention ? 'mention-' + semester.mention : ''}`;
-            courseItem.dataset.courseId = courseId;
-            
-            const courseContent = document.createElement('div');
-            courseContent.className = 'course-content';
-            
-            const courseName = document.createElement('span');
-            courseName.className = 'course-name';
-            courseName.textContent = course;
-            
-            const gradeInput = document.createElement('input');
-            gradeInput.type = 'number';
-            gradeInput.className = 'grade-input';
-            gradeInput.min = 1;
-            gradeInput.max = 7;
-            gradeInput.step = 0.1;
-            gradeInput.value = courseGrade;
-            gradeInput.placeholder = 'Nota';
-            gradeInput.addEventListener('change', (e) => saveGrade(courseId, e.target.value));
-            
-            const gradeDisplay = document.createElement('span');
-            gradeDisplay.className = 'grade-display';
-            gradeDisplay.textContent = courseGrade;
-            
-            const checkboxContainer = document.createElement('div');
-            checkboxContainer.className = 'checkbox-container';
-            
-            courseContent.appendChild(courseName);
-            courseContent.appendChild(gradeDisplay);
-            courseContent.appendChild(gradeInput);
-            courseContent.appendChild(checkboxContainer);
-            
-            courseItem.appendChild(courseContent);
-            courseList.appendChild(courseItem);
-            
-            courseItem.addEventListener('click', (e) => {
-                // Evitar que el click en el input de nota active el toggle
-                if (e.target !== gradeInput) {
-                    toggleCourseCompletion(courseId);
-                }
-            });
+        const filteredSemesters = curriculumData.filter(semester => {
+            if (!semester.mention) return true;
+            return currentMention === 'none' ? false : semester.mention === currentMention;
         });
         
-        semesterEl.appendChild(semesterHeader);
-        semesterEl.appendChild(courseList);
-        semestersGrid.appendChild(semesterEl);
-    });
-}
-
-// Nueva función para guardar el promedio
-function saveGrade(courseId, grade) {
-    if (!completedCourses[courseId]) {
-        completedCourses[courseId] = {};
-    }
-    completedCourses[courseId].grade = grade;
-    localStorage.setItem('completedCourses', JSON.stringify(completedCourses));
-    
-    // Actualizar la visualización
-    const gradeDisplay = document.querySelector(`.course-item[data-course-id="${courseId}"] .grade-display`);
-    if (gradeDisplay) {
-        gradeDisplay.textContent = grade;
-    }
-}
-
-// Modificar la función toggleCourseCompletion
-function toggleCourseCompletion(courseId) {
-    if (!completedCourses[courseId] || typeof completedCourses[courseId] === 'boolean') {
-        completedCourses[courseId] = { grade: '' };
-    } else {
-        completedCourses[courseId] = !completedCourses[courseId];
-    }
-    
-    localStorage.setItem('completedCourses', JSON.stringify(completedCourses));
-    
-    const courseItem = document.querySelector(`.course-item[data-course-id="${courseId}"]`);
-    if (courseItem) {
-        courseItem.classList.toggle('completed');
-        
-        // Mostrar/ocultar inputs según corresponda
-        const gradeInput = courseItem.querySelector('.grade-input');
-        const gradeDisplay = courseItem.querySelector('.grade-display');
-        
-        if (courseItem.classList.contains('completed')) {
-            gradeInput.style.display = 'block';
-            gradeDisplay.style.display = 'block';
+        filteredSemesters.forEach(semester => {
+            const semesterEl = document.createElement('div');
+            semesterEl.className = `semester ${semester.mention ? 'mention-semester' : ''}`;
             
-            // Si ya tiene nota, mostrarla
-            if (completedCourses[courseId]?.grade) {
-                gradeDisplay.textContent = completedCourses[courseId].grade;
-                gradeInput.value = completedCourses[courseId].grade;
-            }
-        } else {
-            gradeInput.style.display = 'none';
-            gradeDisplay.style.display = 'none';
+            const semesterHeader = document.createElement('div');
+            semesterHeader.className = 'semester-header';
+            semesterHeader.innerHTML = `<h3 class="semester-title">${semester.title}</h3>`;
+            
+            const courseList = document.createElement('ul');
+            courseList.className = 'course-list';
+            
+            semester.courses.forEach(course => {
+                const courseId = course.replace(/\s+/g, '-').toLowerCase();
+                const isCompleted = completedCourses[courseId] || false;
+                const courseGrade = completedCourses[courseId]?.grade || '';
+                
+                const courseItem = document.createElement('li');
+                courseItem.className = `course-item ${isCompleted ? 'completed' : ''} ${semester.mention ? 'mention-' + semester.mention : ''}`;
+                courseItem.dataset.courseId = courseId;
+                
+                const courseContent = document.createElement('div');
+                courseContent.className = 'course-content';
+                
+                const courseName = document.createElement('span');
+                courseName.className = 'course-name';
+                courseName.textContent = course;
+                
+                const gradeInput = document.createElement('input');
+                gradeInput.type = 'number';
+                gradeInput.className = 'grade-input';
+                gradeInput.min = 1;
+                gradeInput.max = 7;
+                gradeInput.step = 0.1;
+                gradeInput.value = courseGrade;
+                gradeInput.placeholder = 'Nota';
+                gradeInput.addEventListener('change', (e) => saveGrade(courseId, e.target.value));
+                
+                const gradeDisplay = document.createElement('span');
+                gradeDisplay.className = 'grade-display';
+                gradeDisplay.textContent = courseGrade;
+                
+                const checkboxContainer = document.createElement('div');
+                checkboxContainer.className = 'checkbox-container';
+                
+                courseContent.appendChild(courseName);
+                courseContent.appendChild(gradeDisplay);
+                courseContent.appendChild(gradeInput);
+                courseContent.appendChild(checkboxContainer);
+                
+                courseItem.appendChild(courseContent);
+                courseList.appendChild(courseItem);
+                
+                courseItem.addEventListener('click', (e) => {
+                    if (e.target !== gradeInput && e.target !== gradeDisplay) {
+                        toggleCourseCompletion(courseId);
+                    }
+                });
+            });
+            
+            semesterEl.appendChild(semesterHeader);
+            semesterEl.appendChild(courseList);
+            semestersGrid.appendChild(semesterEl);
+        });
+    }
+
+    // Guardar el promedio
+    function saveGrade(courseId, grade) {
+        if (!completedCourses[courseId]) {
+            completedCourses[courseId] = {};
+        }
+        completedCourses[courseId].grade = grade;
+        localStorage.setItem('completedCourses', JSON.stringify(completedCourses));
+        
+        const gradeDisplay = document.querySelector(`.course-item[data-course-id="${courseId}"] .grade-display`);
+        if (gradeDisplay) {
+            gradeDisplay.textContent = grade;
         }
     }
-    
-    updateProgress();
-}
+
+    // Alternar estado de completado
+    function toggleCourseCompletion(courseId) {
+        if (!completedCourses[courseId] || typeof completedCourses[courseId] === 'boolean') {
+            completedCourses[courseId] = { grade: '' };
+        } else {
+            completedCourses[courseId] = !completedCourses[courseId];
+        }
+        
+        localStorage.setItem('completedCourses', JSON.stringify(completedCourses));
+        
+        const courseItem = document.querySelector(`.course-item[data-course-id="${courseId}"]`);
+        if (courseItem) {
+            courseItem.classList.toggle('completed');
+            
+            const gradeInput = courseItem.querySelector('.grade-input');
+            const gradeDisplay = courseItem.querySelector('.grade-display');
+            
+            if (courseItem.classList.contains('completed')) {
+                gradeInput.style.display = 'block';
+                gradeDisplay.style.display = 'block';
+                
+                if (completedCourses[courseId]?.grade) {
+                    gradeDisplay.textContent = completedCourses[courseId].grade;
+                    gradeInput.value = completedCourses[courseId].grade;
+                }
+            } else {
+                gradeInput.style.display = 'none';
+                gradeDisplay.style.display = 'none';
+            }
+        }
+        
+        updateProgress();
+    }
 
     // Actualizar la barra de progreso
     function updateProgress() {
-        const allCourses = curriculumData.flatMap(semester => semester.courses);
-        const totalCourses = allCourses.length;
-        
-        // Contar cursos completados que están visibles según la mención seleccionada
         const visibleCourses = curriculumData.filter(semester => {
             if (!semester.mention) return true;
             return currentMention === 'none' ? false : semester.mention === currentMention;
@@ -327,17 +318,12 @@ function toggleCourseCompletion(courseId) {
     // Aplicar color de tema
     function applyThemeColor(color) {
         document.documentElement.style.setProperty('--primary-color', color);
-        
-        // Calcular colores oscuro y claro basados en el color principal
         const darkColor = shadeColor(color, -20);
         const lightColor = shadeColor(color, 20);
-        
         document.documentElement.style.setProperty('--primary-dark', darkColor);
         document.documentElement.style.setProperty('--primary-light', lightColor);
         
-        // Actualizar botones
-        const buttons = document.querySelectorAll('button:not(.complete-btn)');
-        buttons.forEach(btn => {
+        document.querySelectorAll('button:not(.complete-btn)').forEach(btn => {
             btn.style.backgroundColor = color;
         });
     }
@@ -356,15 +342,10 @@ function toggleCourseCompletion(courseId) {
         G = (G<255)?G:255;  
         B = (B<255)?B:255;  
 
-        R = Math.round(R);
-        G = Math.round(G);
-        B = Math.round(B);
-
-        const RR = ((R.toString(16).length==1)?"0"+R.toString(16):R.toString(16));
-        const GG = ((G.toString(16).length==1)?"0"+G.toString(16):G.toString(16));
-        const BB = ((B.toString(16).length==1)?"0"+B.toString(16):B.toString(16));
-
-        return "#"+RR+GG+BB;
+        return "#" + 
+            (R.toString(16).length==1?"0"+R.toString(16):R.toString(16)) + 
+            (G.toString(16).length==1?"0"+G.toString(16):G.toString(16)) + 
+            (B.toString(16).length==1?"0"+B.toString(16):B.toString(16));
     }
 
     // Event listeners
@@ -381,6 +362,6 @@ function toggleCourseCompletion(courseId) {
         applyThemeColor(themeColor);
     });
 
-    // Inicializar la aplicación
+    // Inicializar
     init();
 });
